@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import List from './pages/List'
 
 import Create from './pages/Create'
 
@@ -15,6 +16,7 @@ function App() {
                 <Route path={'/register'} component={Register} />
                 <Route path={'/login'} component={Login} />
                 <Route path={'/add'} component={Create} />
+                <Route path={'/list'} component={List} />
 
                 {/* <Route path={'/register'} component={Register}></Route> */}
             </Switch>

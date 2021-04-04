@@ -14,5 +14,12 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+const db = firebase.firestore()
+export const streamTransactionsForUser = (userId, observer) => {
+    return db
+        .collection('transactions')
+        .where('user', '==', userId)
+        .onSnapshot(observer)
+}
 
 export default firebase

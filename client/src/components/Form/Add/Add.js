@@ -13,15 +13,22 @@ const Add = () => {
         date: '',
         user: '',
     })
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
-        if (data.user === '' && user) {
-            setData({
-                ...data,
-                user: user.uid,
-            })
-        }
-    }, [data, user])
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user && !loaded) {
+                setData({
+                    ...data,
+                    user: user.uid,
+                })
+                setLoaded(true)
+            } else {
+                setLoaded(true)
+            }
+        })
+    }, [data, loaded])
+
     const [validationErrors, setRule] = useState({
         selectType: '',
         name: '',
@@ -81,7 +88,7 @@ const Add = () => {
     const onSubmitFormHandler = (e) => {
         e.preventDefault()
 
-        db.collection(`${data.selectType}`)
+        db.collection(`transactions`)
             .add(data)
             .then((docRef) => {
                 console.log('Document written with ID: ', docRef.id)
@@ -94,11 +101,9 @@ const Add = () => {
                 console.error('Error adding document: ', error)
             })
     }
-
-    return (
-        <div className="add-new">
-            <div className="container">
-                <h1>Add Expense or Income</h1>
+    const FormContent = ({ loaded, user }) => {
+        if (loaded && user) {
+            return (
                 <form onSubmit={onSubmitFormHandler}>
                     <select
                         name="selectType"
@@ -169,6 +174,19 @@ const Add = () => {
 
                     <button>Add</button>
                 </form>
+            )
+        } else if (!loaded) {
+            return <p>Loading...</p>
+        } else if (loaded && !user) {
+            return <p>Please log in...</p>
+        }
+    }
+
+    return (
+        <div className="add-new">
+            <div className="container">
+                <h1>Add Expense or Income</h1>
+                <FormContent loaded={loaded} user={data.user} />
             </div>
         </div>
     )
