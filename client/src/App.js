@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import List from './pages/List'
 
 import Create from './pages/Create'
+import Edit from './pages/Edit'
 
 function App() {
     return (
@@ -16,7 +17,8 @@ function App() {
                 <Route path={'/register'} component={Register} />
                 <Route path={'/login'} component={Login} />
                 <Route path={'/add'} component={Create} />
-                <Route path={'/list'} component={List} />
+                <Route path={'/list'} exact component={List} />
+                <Route path={'/list/:id'} component={Edit} />
 
                 {/* <Route path={'/register'} component={Register}></Route> */}
             </Switch>

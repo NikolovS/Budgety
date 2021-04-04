@@ -5,22 +5,7 @@ import 'firebase/firestore'
 
 const db = firebase.firestore()
 
-const Add = ({ loaded, data, setData }) => {
-    const onChangeHandler = (e) => {
-        e.preventDefault()
-
-        let state = { ...data }
-        if (e.target.name === 'amount') {
-            state[e.target.name] = Number(e.target.value)
-        } else {
-            state[e.target.name] = e.target.value
-        }
-
-        setData(state)
-    }
-
-    const user = firebase.auth().currentUser
-
+const Update = ({ loaded, data, setData, id }) => {
     const [validationErrors, setRule] = useState({
         selectType: '',
         name: '',
@@ -65,14 +50,22 @@ const Add = ({ loaded, data, setData }) => {
         }
     }
 
+    const onChangeHandler = (e) => {
+        let state = { ...data }
+        // if (e.target.name === 'amount') {
+        //     state[e.target.name] = Number(e.target.value)
+        // } else {
+        state[e.target.name] = e.target.value
+        // }
+
+        setData(state)
+    }
     const onSubmitFormHandler = (e) => {
         e.preventDefault()
-
+        console.log('data', data)
         db.collection(`transactions`)
-            .add(data)
-            .then((docRef) => {
-                console.log('Document written with ID: ', docRef.id)
-            })
+            .doc(id)
+            .update(data)
             .catch((error) => {
                 setRule({
                     ...validationErrors,
@@ -146,14 +139,14 @@ const Add = ({ loaded, data, setData }) => {
                     ''
                 )}
 
-                <button>Add</button>
+                <button>Edit</button>
             </form>
         )
     } else if (!loaded) {
         return <p>Loading...</p>
-    } else if (loaded && !user) {
+    } else if (loaded && !data.user) {
         return <p>Please log in...</p>
     }
 }
 
-export default Add
+export default Update

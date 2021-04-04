@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import firebase, { streamTransactionsForUser } from '../../services/firebase'
 import 'firebase/firestore'
+import { Link } from 'react-router-dom'
 
 const ListRecords = () => {
     const [data, setData] = useState([])
@@ -41,6 +42,10 @@ const ListRecords = () => {
                         <td>{t.name}</td>
                         <td>{t.amount}</td>
                         <td>{t.date}</td>
+                        <td>
+                            <Link to={`/list/${t.id}`}>Edit</Link>
+                            <Link to={`/list/${t.id}`}>Delete</Link>
+                        </td>
                     </tr>
                 )
             })
@@ -84,6 +89,7 @@ const ListRecords = () => {
                             <th>Name</th>
                             <th>Amount</th>
                             <th>Date</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

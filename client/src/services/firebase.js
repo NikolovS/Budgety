@@ -21,5 +21,7 @@ export const streamTransactionsForUser = (userId, observer) => {
         .where('user', '==', userId)
         .onSnapshot(observer)
 }
-
+export const userRecord = (recordId) => {
+    return db.collection('transactions').doc(recordId).get()
+}
 export default firebase
