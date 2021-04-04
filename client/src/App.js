@@ -5,6 +5,8 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import Login from './pages/Login'
 
+import Create from './pages/Create'
+
 function App() {
     return (
         <div className="app">
@@ -12,6 +14,7 @@ function App() {
                 <Route path={'/'} exact component={Home} />
                 <Route path={'/register'} component={Register} />
                 <Route path={'/login'} component={Login} />
+                <Route path={'/add'} component={Create} />
 
                 {/* <Route path={'/register'} component={Register}></Route> */}
             </Switch>

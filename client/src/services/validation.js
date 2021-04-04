@@ -45,4 +45,40 @@ export const rules = {
         }
         return ''
     },
+    name: (value) => {
+        if (!value) {
+            return 'You need to provide a name for your record!'
+        } else if (value && value[0] !== value[0].toUpperCase()) {
+            return 'Must start with upper!'
+        }
+        return ''
+    },
+    amount: (value) => {
+        if (!value) {
+            return 'Amount is required'
+        } else if (!/\d+(\.\d{1,2})?/.test(value)) {
+            return 'The Amount must be a valid number'
+        } else if (value === 0) {
+            return 'The amount must be greater than zero'
+        }
+        return ''
+    },
+    selectType: (value) => {
+        if (value === 'Choose Type' || value === '') {
+            return 'You need to select an option'
+        }
+        return ''
+    },
+    date: (value) => {
+        if (!value) {
+            return 'You need to choose a date'
+        } else if (
+            !/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/.test(
+                value
+            )
+        ) {
+            return 'You need to choose a valid date!'
+        }
+        return ''
+    },
 }
