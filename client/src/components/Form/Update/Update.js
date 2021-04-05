@@ -82,6 +82,7 @@ const Update = ({ loaded, data, setData, id }) => {
                     name="selectType"
                     onBlur={blurHandler}
                     onChange={onChangeHandler}
+                    value={data.selectType}
                 >
                     <option value="">Choose Type</option>
                     <option value="Expense">Expense</option>
