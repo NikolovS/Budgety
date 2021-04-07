@@ -3,6 +3,7 @@ import ListRecords from '../components/ListRecords'
 
 import { useEffect, useState } from 'react'
 import firebase, { streamTransactionsForUser,streamTransactionsForExpense, streamTransactionsForIncome } from '../services/firebase'
+import Total from '../components/Total/Total'
 const List = () => {
     const [data, setData] = useState([])
     const [loaded, setLoaded] = useState(false)
@@ -132,6 +133,12 @@ const List = () => {
                                 setLoaded={setLoaded}
                             />
                         </tbody>
+                        <tfoot>
+                            {selection==='All' && <Total data={data} loaded={loaded} selection={selection} />}
+                            {selection==='Expense'   && <Total data={data} loaded={loaded} selection={selection} />}
+                            {selection==='Income'   && <Total data={data} loaded={loaded} selection={selection} />}
+                           
+                        </tfoot>
                     </table>
                 </div>
             </div>

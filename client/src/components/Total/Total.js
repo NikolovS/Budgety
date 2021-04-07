@@ -1,6 +1,6 @@
 import 'firebase/firestore'
 
-const Total = ({ loaded, data }) => {
+const Total = ({ loaded, data , selection }) => {
     let total = 0
     let totalInc = 0
     let totalExp = 0
@@ -41,9 +41,166 @@ const Total = ({ loaded, data }) => {
         return totalInc
     }
 
+    if (selection==='All') {
     if (loaded && data.length > 0) {
         return (
+             
             <>
+                 
+                <tr>
+                    <td colSpan="5">
+                        <p style={{ textAlign: 'center' }}>
+                            Total Expenses:
+                            {calculateTotalExp()}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colSpan="5">
+                        <p style={{ textAlign: 'center' }}>
+                            Total Incomes:
+                            {calculateTotalInc()}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colSpan="5">
+                        <p style={{ textAlign: 'center' }}>
+                            Total:
+                            {calculateTotal()}
+                        </p>
+                    </td>
+                </tr>
+            </>
+        )
+    } else if (loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>No records</p>
+                </td>
+            </tr>
+        )
+    } else if (!loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>Loading</p>
+                </td>
+            </tr>
+        )
+    } else {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>
+                        Unhandled component state
+                    </p>
+                </td>
+            </tr>
+        )
+    }
+    }
+    else if (selection==='Expense') {
+        if (loaded && data.length > 0) {
+        return (
+             
+            <>
+                 
+                <tr>
+                    <td colSpan="5">
+                        <p style={{ textAlign: 'center' }}>
+                            Total Expenses:
+                            {calculateTotalExp()}
+                        </p>
+                    </td>
+                </tr>
+                 
+                 
+            </>
+        )
+    } else if (loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>No records</p>
+                </td>
+            </tr>
+        )
+    } else if (!loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>Loading</p>
+                </td>
+            </tr>
+        )
+    } else {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>
+                        Unhandled component state
+                    </p>
+                </td>
+            </tr>
+        )
+    }
+    }
+    else if (selection==='Income') {
+        
+    if (loaded && data.length > 0) {
+        return (
+             
+            <>
+                
+                <tr>
+                    <td colSpan="5">
+                        <p style={{ textAlign: 'center' }}>
+                            Total Incomes:
+                            {calculateTotalInc()}
+                        </p>
+                    </td>
+                </tr>
+                
+            </>
+        )
+    } else if (loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>No records</p>
+                </td>
+            </tr>
+        )
+    } else if (!loaded && data.length === 0) {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>Loading</p>
+                </td>
+            </tr>
+        )
+    } else {
+        return (
+            <tr>
+                <td colSpan="5">
+                    <p style={{ textAlign: 'center' }}>
+                        Unhandled component state
+                    </p>
+                </td>
+            </tr>
+        )
+    }
+    }
+
+
+
+    if (loaded && data.length > 0) {
+        return (
+             
+            <>
+                 
                 <tr>
                     <td colSpan="5">
                         <p style={{ textAlign: 'center' }}>
