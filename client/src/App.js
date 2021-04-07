@@ -8,6 +8,7 @@ import List from './pages/List'
 
 import Create from './pages/Create'
 import Edit from './pages/Edit'
+import Budget from './pages/Budget'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path={'/login'} component={Login} />
                 <Route path={'/add'} component={Create} />
                 <Route path={'/list'} exact component={List} />
+                <Route path={'/total'} exact component={Budget} />
                 <Route path={'/list/:id'} component={Edit} />
 
                 {/* <Route path={'/register'} component={Register}></Route> */}

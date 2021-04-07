@@ -1,8 +1,9 @@
 import MainLayout from '../Layout/MainLayout'
 import ListRecords from '../components/ListRecords'
+import Total from '../components/Total'
 import { useEffect, useState } from 'react'
 import firebase, { streamTransactionsForUser } from '../services/firebase'
-const List = () => {
+const Budget = () => {
     const [data, setData] = useState([])
     const [loaded, setLoaded] = useState(false)
     useEffect(() => {
@@ -34,7 +35,7 @@ const List = () => {
         <MainLayout>
             <div className="budget">
                 <div className="container">
-                    <h1>List</h1>
+                    <h1>Budget</h1>
                     <table>
                         <thead>
                             <tr>
@@ -54,6 +55,9 @@ const List = () => {
                                 setLoaded={setLoaded}
                             />
                         </tbody>
+                        <tfoot>
+                            <Total data={data} loaded={loaded} />
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -61,4 +65,4 @@ const List = () => {
     )
 }
 
-export default List
+export default Budget
