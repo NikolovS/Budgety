@@ -21,6 +21,22 @@ export const streamTransactionsForUser = (userId, observer) => {
         .where('user', '==', userId)
         .onSnapshot(observer)
 }
+export const streamTransactionsForExpense = (userId, observer) => {
+    return db
+        .collection('transactions')
+        .where('user', '==', userId)
+        .where('selectType', '==', 'Expense')
+        .onSnapshot(observer)
+}
+export const streamTransactionsForIncome = (userId, observer) => {
+    return db
+        .collection('transactions')
+        .where('user', '==', userId)
+        .where('selectType', '==', 'Income')
+        .onSnapshot(observer)
+}
+
+
 export const userRecord = (recordId) => {
     return db.collection('transactions').doc(recordId).get()
 }
