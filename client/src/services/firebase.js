@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-const firebaseConfig = {
+export const firebaseConfig = {
 	apiKey: "AIzaSyBAAT_R3amiVUf5qXa8syYYeXHFAxfAMvA",
 	authDomain: "budgety-a6dd3.firebaseapp.com",
 	databaseURL: "https://budgety-a6dd3.firebaseio.com",
@@ -34,11 +34,6 @@ export const streamTransactionsForUser = (
 export const userRecord = (recordId) => {
 	return db.collection("transactions").doc(recordId).get();
 };
-
-export const ALGOLIA_ID = firebaseConfig.appId;
-export const ALGOLIA_ADMIN_KEY = firebaseConfig.apiKey;
-
-export const ALGOLIA_INDEX_NAME = "name";
 
 export default firebase;
 

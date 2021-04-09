@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 import firebase from '../../../services/firebase'
 import 'firebase/auth'
 import { rules } from '../../../services/validation'
@@ -195,6 +196,10 @@ const Register = () => {
                     ''
                 )}
             </form>
+              <div className="redirect">
+                <p>Have an account?</p>
+                <Link to="/login">Login</Link>
+            </div>
         </div>
     )
 }

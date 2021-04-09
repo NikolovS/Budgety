@@ -1,11 +1,11 @@
 import { useState } from "react";
 import firebase from "../../../services/firebase";
 import { rules } from "../../../services/validation";
+import { Link } from "react-router-dom";
 import "firebase/firestore";
 
-const db = firebase.firestore();
-
 const User = ({ loaded, data, setData }) => {
+	const [edit,setEdit]=useState(false)
 	const [validationErrors, setRule] = useState({
 		email: "",
 		displayName: "",
@@ -46,6 +46,7 @@ const User = ({ loaded, data, setData }) => {
 	};
 	const onSubmitFormHandler = async (e) => {
 		e.preventDefault();
+		setEdit(false)
 		let currentUser = await firebase.auth().currentUser;
 		if (currentUser) {
 			await currentUser.updateProfile({
@@ -56,9 +57,10 @@ const User = ({ loaded, data, setData }) => {
 		}
 	};
 
-	if (loaded && data.email) {
-		return (
-			<form onSubmit={onSubmitFormHandler}>
+if (edit) {
+if (loaded && data.email) {
+return (
+				<form onSubmit={onSubmitFormHandler}>
 				<label htmlFor='displayName'>User Name</label>
 				<input
 					type='text'
@@ -92,13 +94,39 @@ const User = ({ loaded, data, setData }) => {
 				)}
 
 				<button>Save</button>
+				<Link to='change-password'>Change Password</Link>
 			</form>
 		);
 	} else if (!loaded) {
 		return <p>Loading...</p>;
 	} else if (loaded && !data.email) {
 		return <p>Please log in...</p>;
+		} 
+}
+else {
+		if (loaded && data.email) {
+		return (
+			<div className="user-profile">
+				<p>Name:</p>
+				<p>{data.displayName}</p>
+				<p>Email:</p>
+				<p>{data.email}</p>
+				<button onClick={e=>setEdit(true)}>Edit</button>
+				<Link to='change-password'>Change Password</Link>
+
+			</div>
+		
+		);
+	} else if (!loaded) {
+		return <p>Loading...</p>;
+	} else if (loaded && !data.email) {
+		return <p>Please log in...</p>;
 	}
+	}
+
+
+
+
 };
 
 export default User;

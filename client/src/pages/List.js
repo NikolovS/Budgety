@@ -33,7 +33,7 @@ const List = () => {
 			type,
 			order
 		);
-		return unsubscribe;
+		return unsubscribe();
 	}, [type, order]);
 
 	const onTypeChange = useCallback((e) => setType(e.target.value), []);

@@ -1,4 +1,5 @@
 import firebase from '../../../services/firebase'
+import {Link} from 'react-router-dom'
 import 'firebase/auth'
 import { useState } from 'react'
 import { rules } from '../../../services/validation'
@@ -111,6 +112,10 @@ const Login = () => {
                     ''
                 )}
             </form>
+            <div className="redirect">
+                <p>Don't have an account?</p>
+                <Link to="/register">Register</Link>
+            </div>
         </div>
     )
 }

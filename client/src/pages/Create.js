@@ -15,7 +15,7 @@ const Create = () => {
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged((user) => {
+ 	firebase.auth().onAuthStateChanged((user) => {
 			if (user && !loaded) {
 				setData({
 					...data,

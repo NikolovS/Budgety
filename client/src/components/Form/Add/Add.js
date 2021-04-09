@@ -2,6 +2,8 @@ import { useState } from 'react'
 import firebase from '../../../services/firebase'
 import { rules } from '../../../services/validation'
 import 'firebase/firestore'
+import { Redirect } from 'react-router-dom'
+ 
 
 const db = firebase.firestore()
 
@@ -67,11 +69,12 @@ const Add = ({ loaded, data, setData }) => {
 
     const onSubmitFormHandler = (e) => {
         e.preventDefault()
-
         db.collection(`transactions`)
             .add(data)
             .then((docRef) => {
                 console.log('Document written with ID: ', docRef.id)
+                return  <Redirect to="/list" /> 
+                
             })
             .catch((error) => {
                 setRule({
@@ -80,6 +83,7 @@ const Add = ({ loaded, data, setData }) => {
                 })
                 console.error('Error adding document: ', error)
             })
+            
     }
 
     if (loaded && data.user) {

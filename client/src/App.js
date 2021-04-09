@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import List from "./pages/List";
 import Profile from "./pages/Profile";
-
+import ChangePass from "./pages/ChangePass";
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Budget from "./pages/Budget";
@@ -23,6 +23,7 @@ function App() {
 				<Route path={"/total"} exact component={Budget} />
 				<Route path={"/list/:id"} component={Edit} />
 				<Route path={"/profile"} component={Profile} />
+				<Route path={"/change-password"} component={ChangePass} />
 
 				{/* <Route path={'/register'} component={Register}></Route> */}
 			</Switch>
