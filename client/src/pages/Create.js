@@ -15,18 +15,23 @@ const Create = () => {
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
+		 
  	firebase.auth().onAuthStateChanged((user) => {
 			if (user && !loaded) {
-				setData({
-					...data,
-					user: user.uid,
+				setData((currentState) => {
+					return {
+						...currentState,
+						user: user.uid,
+					}
 				});
 				setLoaded(true);
-			} else if (!user && !loaded) {
-				setLoaded(true);
 			}
+		 
+		  
+
+
 		});
-	}, [data, loaded]);
+	}, [loaded]);
 
 	return (
 		<MainLayout>

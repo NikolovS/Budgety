@@ -1,9 +1,9 @@
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import { Redirect } from "react-router-dom";
 const AuthLayout = ({ children }) => {
- return(<FirebaseAuthConsumer>
+	return (
+		<FirebaseAuthConsumer>
 			{({ isSignedIn, user, providerId }) => {
-				
 				if (!isSignedIn) {
 					return (
 						<div className='auth-layout'>
@@ -15,7 +15,7 @@ const AuthLayout = ({ children }) => {
 				}
 			}}
 		</FirebaseAuthConsumer>
-	)
+	);
 };
 
 export default AuthLayout;

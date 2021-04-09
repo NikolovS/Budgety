@@ -10,6 +10,7 @@ import ChangePass from "./pages/ChangePass";
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Budget from "./pages/Budget";
+import AuthRoute from "./AuthRoute";
 
 function App() {
 	return (
@@ -18,14 +19,12 @@ function App() {
 				<Route path={"/"} exact component={Home} />
 				<Route path={"/register"} component={Register} />
 				<Route path={"/login"} component={Login} />
-				<Route path={"/add"} component={Create} />
-				<Route path={"/list"} exact component={List} />
-				<Route path={"/total"} exact component={Budget} />
-				<Route path={"/list/:id"} component={Edit} />
-				<Route path={"/profile"} component={Profile} />
-				<Route path={"/change-password"} component={ChangePass} />
-
-				{/* <Route path={'/register'} component={Register}></Route> */}
+				<AuthRoute path={"/add"} component={Create} />
+				<AuthRoute path={"/list"} exact component={List} />
+				<AuthRoute path={"/total"} exact component={Budget} />
+				<AuthRoute path={"/list/:id"} component={Edit} />
+				<AuthRoute path={"/profile"} component={Profile} />
+				<AuthRoute path={"/change-password"} component={ChangePass} />
 			</Switch>
 		</div>
 	);

@@ -1,11 +1,11 @@
-import MainLayout from '../Layout/MainLayout'
-import Main from '../components/Main'
+import MainLayout from "../Layout/MainLayout";
+import Main from "../components/Main";
 const Home = () => {
-    return (
-        <MainLayout>
-            <Main />
-        </MainLayout>
-    )
-}
+	return (
+		<MainLayout>
+			<Main />
+		</MainLayout>
+	);
+};
 
-export default Home
+export default Home;

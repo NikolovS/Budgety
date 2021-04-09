@@ -1,6 +1,7 @@
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import firebase from "../../services/firebase";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
+
 const MainLayout = ({ children }) => {
 	const onClickLogOut = (e) => {
 		firebase
@@ -15,21 +16,26 @@ const MainLayout = ({ children }) => {
 	};
 	return (
 		<FirebaseAuthConsumer>
-			{({ isSignedIn, user, providerId }) => {
-				
-				if (isSignedIn) {
+			{({ isLoggedIn }) => {
+				if (isLoggedIn) {
 					return (
 						<div className='main-layout'>
-							<Link to="/list">See your Records</Link>
-							<Link to="/add">Add new record</Link>
-							<button onClick={onClickLogOut}>SignOut</button>
-							<Link to="/profile">Profile</Link>
-							
+							<div className='userOptions'>
+								<Link to='/list'>See your Records</Link>
+								<Link to='/add'>Add new record</Link>
+								<button onClick={onClickLogOut}>SignOut</button>
+								<Link to='/profile'>Profile</Link>
+							</div>
+
 							<div className='container'>{children}</div>
 						</div>
 					);
 				} else {
-					return <Redirect to='/login' />;
+					return (
+						<div className='main-layout'>
+							<div className='container'>{children}</div>
+						</div>
+					);
 				}
 			}}
 		</FirebaseAuthConsumer>

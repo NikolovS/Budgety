@@ -20,6 +20,7 @@ const Add = ({ loaded, data, setData }) => {
 
         setData(state)
     }
+    const [redirectTo,setRedirectTo]=useState("")
 
     const user = firebase.auth().currentUser
 
@@ -69,27 +70,36 @@ const Add = ({ loaded, data, setData }) => {
 
     const onSubmitFormHandler = (e) => {
         e.preventDefault()
-        db.collection(`transactions`)
-            .add(data)
-            .then((docRef) => {
-                console.log('Document written with ID: ', docRef.id)
-                return  <Redirect to="/list" /> 
+         
+        if (data.selectType !== "" && data.name !== "" && data.amount !== "" && data.date !== "") {
+     
+            db.collection(`transactions`)
+                .add(data)
+                .then((docRef) => {
+                    if (docRef.id) {
+                        console.log('Document written with ID: ', docRef.id)
+                        setRedirectTo("/list")
                 
-            })
-            .catch((error) => {
-                setRule({
-                    ...validationErrors,
-                    firebaseError: error,
+                    }
+                
                 })
-                console.error('Error adding document: ', error)
-            })
-            
+                .catch((error) => {
+                    setRule({
+                        ...validationErrors,
+                        firebaseError: error,
+                    })
+                    console.error('Error adding document: ', error)
+                })
+        }
     }
 
-    if (loaded && data.user) {
+    if (redirectTo.length) {
+        return <Redirect to={redirectTo}/>
+    } else if (loaded && data.user) {
         return (
             <form onSubmit={onSubmitFormHandler}>
                 <select
+                    required
                     name="selectType"
                     onBlur={blurHandler}
                     onChange={onChangeHandler}
@@ -108,6 +118,7 @@ const Add = ({ loaded, data, setData }) => {
 
                 <label htmlFor="name">Name</label>
                 <input
+                    required
                     type="text"
                     id="name"
                     name="name"
@@ -122,6 +133,7 @@ const Add = ({ loaded, data, setData }) => {
                 )}
                 <label htmlFor="amount">Amount</label>
                 <input
+                    required
                     type="number"
                     id="amount"
                     name="amount"
@@ -137,6 +149,7 @@ const Add = ({ loaded, data, setData }) => {
 
                 <label htmlFor="date">Date</label>
                 <input
+                    required
                     type="date"
                     id="date"
                     name="date"

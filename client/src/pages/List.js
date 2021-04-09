@@ -3,6 +3,7 @@ import ListRecords from "../components/ListRecords";
 import { useCallback, useEffect, useState } from "react";
 import { getTransactions } from "../services/firebase";
 import Total from "../components/Total/Total";
+ 
 
 const List = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -12,8 +13,9 @@ const List = () => {
 	const [order, setOrder] = useState({ name: "", type: "" });
 
 	useEffect(() => {
-		const unsubscribe = getTransactions(
-			{
+		 let isMounted = true
+	 
+		getTransactions({
 				next: (querySnapshot) => {
 					const transactionDocs = querySnapshot.docs.map(
 						(docSnapshot) => {
@@ -22,18 +24,23 @@ const List = () => {
 								id: docSnapshot.id,
 							};
 						}
-					);
-					setLoaded(true);
+				 );
+				 if (isMounted) {
+					 setLoaded(true);
 					setData(transactionDocs);
+				 }
+					
 				},
 				error: (e) => {
+					 
 					console.log("Transaction list get fail", e);
 				},
-			},
-			type,
-			order
-		);
-		return unsubscribe();
+		 }, type, order, (r => r())  )
+		return  () => {
+			isMounted=false
+		}
+		 
+		
 	}, [type, order]);
 
 	const onTypeChange = useCallback((e) => setType(e.target.value), []);
