@@ -29,18 +29,18 @@ const MainLayout = ({ children }) => {
 									<nav>
 										<ul>
 											<li>
-											<NavLink activeClassName="active" to='/list'> <i class="fas fa-clipboard-list"></i> See your Records</NavLink>
+											<NavLink activeClassName="active" to='/list'> <i className="fas fa-clipboard-list"></i> See your Records</NavLink>
 											</li>
 											<li>
-											<NavLink activeClassName="active" to='/add'> <i class="fas fa-folder-plus"></i> Add new record</NavLink>
+											<NavLink activeClassName="active" to='/add'> <i className="fas fa-folder-plus"></i> Add new record</NavLink>
 											</li>
 											<li>
-											<NavLink activeClassName="active" to='/profile'> <i class="fas fa-id-card"></i> Profile</NavLink>
+											<NavLink activeClassName="active" to='/profile'> <i className="fas fa-id-card"></i> Profile</NavLink>
 											</li>
 										</ul>
 									</nav>
 									<button onClick={onClickLogOut}>
-									<i class="fas fa-sign-out-alt"></i>
+									<i className="fas fa-sign-out-alt"></i>
 										<span>
 										SignOut
 										</span>

@@ -25,15 +25,15 @@ const Main = () => {
 				</div>
 				<div className='description'>
 					<div className='records'>
-						<i class='far fa-check-square'></i>
+						<i className='far fa-check-square'></i>
 						<p>Calculate easily your Budget.</p>
 					</div>
 					<div className='records'>
-						<i class='far fa-check-square'></i>
+						<i className='far fa-check-square'></i>
 						<p>Add Incomes and Epenses. </p>
 					</div>
 					<div className='records'>
-						<i class='far fa-check-square'></i>
+						<i className='far fa-check-square'></i>
 						<p>See your list with records </p>
 					</div>
 				</div>

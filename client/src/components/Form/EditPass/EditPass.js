@@ -1,11 +1,12 @@
 import { useState, useCallback } from "react";
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import firebase from "../../../services/firebase";
 import { rules } from "../../../services/validation";
 import "firebase/firestore";
 import "./EditPass.scss"
 
 const EditPass = () => {
+	const [redirectTo, setRedirectTo] = useState('');
 	const [data, setData] = useState({
 		currentPassword: "",
 		password: "",
@@ -34,7 +35,7 @@ const EditPass = () => {
 			case "rePassword":
 				setRule({
 					...validationErrors,
-					rePassword: rules.rePassword(value),
+					rePassword: rules.rePassword(value,data.password),
 				});
 				break;
 
@@ -50,51 +51,31 @@ const EditPass = () => {
 
 		setData(state);
 	};
-	const onSubmitFormHandler = useCallback(
-		(e) => {
-			e.preventDefault();
+	const onSubmitFormHandler = useCallback((e) => {
+		e.preventDefault();
 
-			if (data.currentPassword && data.password) {
-				let reauthenticate = (currentPassword) => {
-					let user = firebase.auth().currentUser;
-					let cred = firebase.auth.EmailAuthProvider.credential(
-						user.email,
-						currentPassword
-					);
-					return user.reauthenticateWithCredential(cred);
-				};
-
-				reauthenticate(data.currentPassword)
-					.then(() => {
-						let user = firebase.auth().currentUser;
-						user.updatePassword(data.password)
-							.then(() => {
-								console.log("Password updated!");
-							})
-							.catch((error) => {
-								setRule({
-									...validationErrors,
-									firebaseError: error.message,
-								});
-								console.log(error);
-							});
-					})
-					.catch((error) => {
-						setRule({
-							...validationErrors,
-							firebaseError: error.message,
-						});
-						console.log(error);
-					});
-
-				 
-			}
-		},
-		[data,validationErrors]
-	);
+		const user = firebase.auth().currentUser;
+		let cred = firebase.auth.EmailAuthProvider.credential(
+			user.email,
+			data.currentPassword
+		);
+		user.reauthenticateWithCredential(cred)
+		.then(() => firebase.auth().currentUser.updatePassword(data.password))
+		.then(() => setRedirectTo('/profile'))
+		.catch((error) => {
+			setRule((errors) => {
+				return {
+					...errors,
+					firebaseError: error.message
+				}
+			});
+			console.log(error);
+		})
+	}, [data]);
 
 	return (
 <div className="edit-pass">
+		{ redirectTo !== '' && <Redirect to={redirectTo}></Redirect> }
 <section className="h-100 w-100">
   <div className="container h-100 w-100">
 	  <div className="row justify-content-md-left h-100">
@@ -147,9 +128,9 @@ const EditPass = () => {
 				   
 				  <div className="form-group m-0">
 							  <button className="btn   btn-block">
-											<i class="far fa-save"></i>	SAVE
+											<i className="far fa-save"></i>	SAVE
 							  </button>
-							<Link to={'/profile'} className="btn back btn-block"   > <i class="fas fa-backspace"></i>Back</Link>
+							<Link to={'/profile'} className="btn back btn-block"   > <i className="fas fa-backspace"></i>Back</Link>
 		  {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
 						  </div>
 						  

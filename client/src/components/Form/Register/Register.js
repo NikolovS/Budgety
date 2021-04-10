@@ -129,7 +129,7 @@ const Register = () => {
                                             className="form-control"
                                             name="firstName"
                                             required
-                                            autofocus
+                                             
                                             value={data.firstName}
                                             onChange={onRegisterChangeHandler}
                                             onBlur={blurHandler}
@@ -146,7 +146,7 @@ const Register = () => {
                                             className="form-control"
                                             name="lastName"
                                             required
-                                            autofocus
+                                             
                                         value={data.lastName}
                                         onChange={onRegisterChangeHandler}
                                         onBlur={blurHandler}/>

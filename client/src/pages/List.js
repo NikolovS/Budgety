@@ -66,12 +66,12 @@ const List = () => {
 			<div className='budget'>
 				<div className='container'>
 					<h1>List</h1>
-					<select name='type' onChange={onTypeChange} className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+					<select name='type' onChange={onTypeChange} className="custom-select custom-select-lg mb-3">
 						<option value=''>All</option>
 						<option value='Expense'>Expense</option>
 						<option value='Income'>Income</option>
 					</select>
-					<table class="table table-hover table-bordered">
+					<table className="table table-hover table-bordered">
 						<thead>
 							<tr>
 								<th scope="col">Id</th>
@@ -91,27 +91,12 @@ const List = () => {
 							/>
 						</tbody>
 						<tfoot>
-							{type === "" && (
 								<Total
 									data={data}
 									loaded={loaded}
 									selection={type}
 								/>
-							)}
-							{type === "Expense" && (
-								<Total
-									data={data}
-									loaded={loaded}
-									selection={type}
-								/>
-							)}
-							{type === "Income" && (
-								<Total
-									data={data}
-									loaded={loaded}
-									selection={type}
-								/>
-							)}
+							 
 						</tfoot>
 					</table>
 				</div>

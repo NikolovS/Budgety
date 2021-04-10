@@ -111,9 +111,9 @@ const Add = ({ loaded, data, setData }) => {
                                                
                               <div className="form-group">
                                 <select
-                                className="form-select-lg mb-3"
+                                className="custom-select custom-select-lg mb-3"
                                 required
-                                autofocus
+                                 
                                 name="selectType"
                                 onBlur={blurHandler}
                                 onChange={onChangeHandler}
@@ -173,7 +173,7 @@ const Add = ({ loaded, data, setData }) => {
                                
                               <div className="form-group m-0">
                                           <button className="btn   btn-block">
-                                                 <i class="far fa-save"></i>     ADD
+                                                 <i className="far fa-save"></i>     ADD
                                           </button>
                       {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
                                       </div>

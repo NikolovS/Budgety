@@ -103,8 +103,8 @@ return (
 										</div>
 				  {validationErrors.email.length ? (<h2 style={{ color: "red" }}>{validationErrors.email}</h2>) : ("")}
 							  <div className="form-group m-0">
-							  <button className="btn   btn-block"> <i class="far fa-save"></i>Save</button>
-					<button className="btn back btn-block" onClick={(e)=>setEdit(false)}> <i class="fas fa-backspace"></i>Back</button>
+							  <button className="btn   btn-block"> <i className="far fa-save"></i>Save</button>
+					<button className="btn back btn-block" onClick={(e)=>setEdit(false)}> <i className="fas fa-backspace"></i>Back</button>
 									  </div>
 				  {validationErrors.firebaseError.length ? (<h2 style={{ color: "red" }}>{validationErrors.firebaseError}</h2>) : ("")}
 							 
@@ -141,7 +141,7 @@ else {
 						<h3>Email:</h3>
 						<p>{data.email}</p>
 										<button className="btn   btn-block" onClick={e => setEdit(true)}>
-										<i class="fas fa-edit"></i> EDIT</button>
+										<i className="fas fa-edit"></i> EDIT</button>
 						
 						</div>
 					</div>

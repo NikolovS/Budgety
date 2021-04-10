@@ -2,6 +2,7 @@ import { useState } from 'react'
 import firebase from '../../../services/firebase'
 import { rules } from '../../../services/validation'
 import 'firebase/firestore'
+import { Redirect } from 'react-router-dom'
 
 const db = firebase.firestore()
 
@@ -13,6 +14,7 @@ const Update = ({ loaded, data, setData, id }) => {
         date: '',
         firebaseError: '',
     })
+    const [redirectTo,setRedirectTo]=useState("")
 
     const blurHandler = (e) => {
         e.preventDefault()
@@ -62,7 +64,7 @@ const Update = ({ loaded, data, setData, id }) => {
     }
     const onSubmitFormHandler = (e) => {
         e.preventDefault()
-        console.log('data', data)
+         setRedirectTo('/list')
         db.collection(`transactions`)
             .doc(id)
             .update(data)
@@ -74,7 +76,9 @@ const Update = ({ loaded, data, setData, id }) => {
                 console.error('Error adding document: ', error)
             })
     }
-
+    if (redirectTo.length) {
+        return <Redirect to={redirectTo}/>
+    }else
     if (loaded && data.user) {
         return (
            <div className="add-record">
@@ -90,7 +94,8 @@ const Update = ({ loaded, data, setData, id }) => {
                                                
                               <div className="form-group">
                               <select
-                            required
+                                                    required
+                                                    className="custom-select custom-select-lg mb-3"
                            name="selectType"
                          value={data.selectType}
                                 onBlur={blurHandler}
@@ -151,7 +156,7 @@ const Update = ({ loaded, data, setData, id }) => {
                                
                               <div className="form-group m-0">
                                           <button className="btn   btn-block">
-                                                   <i class="far fa-save"></i>   ADD
+                                                   <i className="far fa-save"></i>   EDIT
                                           </button>
                       {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
                                       </div>

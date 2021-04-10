@@ -32,9 +32,9 @@ const TableContent = ({ loaded, data }) => {
                     <td>{t.amount}</td>
                     <td>{t.date}</td>
                     <td>
-                        <Link to={`/list/${t.id}`}><i class="fas fa-edit"></i> Edit</Link>
+                        <Link to={`/list/${t.id}`}><i className="fas fa-edit"></i> Edit</Link>
                         <button onClick={onClickDelete} id={t.id}>
-                        <i class="far fa-trash-alt"></i> Delete
+                        <i className="far fa-trash-alt"></i> Delete
                         </button>
                     </td>
                 </tr>
