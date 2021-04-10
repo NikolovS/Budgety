@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import firebase from "../../../services/firebase";
 import { rules } from "../../../services/validation";
 import "firebase/firestore";
+import "./EditPass.scss"
 
 const EditPass = () => {
 	const [data, setData] = useState({
@@ -92,8 +93,19 @@ const EditPass = () => {
 	);
 
 	return (
-		<form onSubmit={onSubmitFormHandler}>
-			<label htmlFor='currentPassword'>Current Password</label>
+<div className="edit-pass">
+<section className="h-100 w-100">
+  <div className="container h-100 w-100">
+	  <div className="row justify-content-md-left h-100">
+		  <div className="card-wrapper ">
+			  
+			  <div className="card fat row justify-content-md-center ">
+				  <div className="card-body ">
+					  <h4 className="card-title">Change Password</h4>
+			  <form  className="my-editpass-validation" onSubmit={onSubmitFormHandler} >
+								   
+				  <div className="form-group">
+				  <label htmlFor='currentPassword'>Current Password</label>
 			<input
 				type='password'
 				id='currentPassword'
@@ -102,15 +114,11 @@ const EditPass = () => {
 				onBlur={blurHandler}
 				onChange={onChangeHandler}
 			/>
-			{validationErrors.currentPassword.length ? (
-				<h2 style={{ color: "red" }}>
-					{validationErrors.currentPassword}
-				</h2>
-			) : (
-				""
-			)}
+								  </div>
+		{validationErrors.currentPassword.length ? (<h2 style={{ color: 'red' }}>{validationErrors.currentPassword}</h2>) : ( '')}
 
-			<label htmlFor='password'>New Password</label>
+				  <div className="form-group">
+				  <label htmlFor='password'>New Password</label>
 			<input
 				type='password'
 				id='password'
@@ -119,13 +127,11 @@ const EditPass = () => {
 				onBlur={blurHandler}
 				onChange={onChangeHandler}
 			/>
-			{validationErrors.password.length ? (
-				<h2 style={{ color: "red" }}>{validationErrors.password}</h2>
-			) : (
-				""
-			)}
+								  </div>
+			   {validationErrors.password.length ? (<h2 style={{ color: 'red' }}> {validationErrors.password}</h2> ) : ('')}
 
-			<label htmlFor='rePassword'>Confirm New Password</label>
+				  <div className="form-group">
+				  <label htmlFor='rePassword'>Confirm New Password</label>
 			<input
 				type='password'
 				id='rePassword'
@@ -134,22 +140,30 @@ const EditPass = () => {
 				onBlur={blurHandler}
 				onChange={onChangeHandler}
 			/>
-			{validationErrors.rePassword.length ? (
-				<h2 style={{ color: "red" }}>{validationErrors.rePassword}</h2>
-			) : (
-				""
-			)}
+								  </div>
+			  {validationErrors.rePassword.length ? (<h2 style={{ color: 'red' }}>{validationErrors.rePassword}</h2>) : ( '' )}
 
-			<button>Save</button>
-			{validationErrors.firebaseError.length ? (
-				<h2 style={{ color: "red" }}>
-					{validationErrors.firebaseError}
-				</h2>
-			) : (
-				""
-			)}
-		</form>
+				   
+				  <div className="form-group m-0">
+							  <button className="btn   btn-block">
+										  SAVE
+							  </button>
+		  {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
+						  </div>
+						  
+					  </form>
+				  </div>
+			  </div>
+
+		  </div>
+	  </div>
+  </div>
+</section>
+
+</div>
+
 	);
 };
 
 export default EditPass;
+

@@ -2,6 +2,7 @@ import { useState } from "react";
 import firebase from "../../../services/firebase";
 import { rules } from "../../../services/validation";
 import { Link } from "react-router-dom";
+import "./User.scss"
 import "firebase/firestore";
 
 const User = ({ loaded, data, setData }) => {
@@ -60,42 +61,62 @@ const User = ({ loaded, data, setData }) => {
 if (edit) {
 if (loaded && data.email) {
 return (
-				<form onSubmit={onSubmitFormHandler}>
-				<label htmlFor='displayName'>User Name</label>
-				<input
-					type='text'
-					id='displayName'
-					name='displayName'
-					value={data.displayName}
-					onBlur={blurHandler}
-					onChange={onChangeHandler}
-				/>
-				{validationErrors.displayName.length ? (
-					<h2 style={{ color: "red" }}>
-						{validationErrors.displayName}
-					</h2>
-				) : (
-					""
-				)}
+	<div className='user'>
 
-				<label htmlFor='email'>Email</label>
-				<input
-					type='text'
-					id='email'
-					name='email'
-					value={data.email}
-					onBlur={blurHandler}
-					onChange={onChangeHandler}
-				/>
-				{validationErrors.email.length ? (
-					<h2 style={{ color: "red" }}>{validationErrors.email}</h2>
-				) : (
-					""
-				)}
-
-				<button>Save</button>
-				<Link to='change-password'>Change Password</Link>
-			</form>
+	<section className="h-100 w-100">
+	  <div className="container h-100 w-100">
+		  <div className="row justify-content-md-left h-100">
+			  <div className="card-wrapper">
+			<div className="card fat">
+					  <div className="card-body">
+								<h4 className="card-title">User Profile</h4>
+								
+				  <form  className="my-user-validation" onSubmit={onSubmitFormHandler} >
+							  <div className="form-group">
+							  <label htmlFor='displayName'>Name</label>
+					<input
+						type='text'
+						id='displayName'
+						name='displayName'
+						value={data.displayName}
+						onBlur={blurHandler}
+						onChange={onChangeHandler}
+					/>
+								  
+							  </div>
+				  {validationErrors.displayName.length ? (<h2 style={{ color: "red" }}>{validationErrors.displayName}</h2>) : ("")}
+							  <div className="form-group">
+							  <label htmlFor='email'>Email</label>
+									<input
+									type='text'
+								id='email'
+								name='email'
+								value={data.email}
+								onBlur={blurHandler}
+								onChange={onChangeHandler}
+					/>
+	
+									</div>
+									<div className="form-group">
+										<Link to='change-password' className="btn   btn-block">Change Password</Link>
+										</div>
+				  {validationErrors.email.length ? (<h2 style={{ color: "red" }}>{validationErrors.email}</h2>) : ("")}
+							  <div className="form-group m-0">
+							  <button className="btn   btn-block">Save</button>
+					
+									  </div>
+				  {validationErrors.firebaseError.length ? (<h2 style={{ color: "red" }}>{validationErrors.firebaseError}</h2>) : ("")}
+							 
+				  </form>
+					  </div>
+				  </div>
+	
+			  </div>
+		  </div>
+	  </div>
+	</section>
+	</div>
+	
 		);
 	} else if (!loaded) {
 		return <p>Loading...</p>;
@@ -106,15 +127,28 @@ return (
 else {
 		if (loaded && data.email) {
 		return (
-			<div className="user-profile">
-				<p>Name:</p>
-				<p>{data.displayName}</p>
-				<p>Email:</p>
-				<p>{data.email}</p>
-				<button onClick={e=>setEdit(true)}>Edit</button>
-				<Link to='change-password'>Change Password</Link>
-
+			<div className="user">
+<section className="h-100 w-100">
+  <div className="container h-100 w-100">
+	  <div className="row justify-content-md-left h-100">
+		  <div className="card-wrapper ">
+			  
+			  <div className="card fat row justify-content-md-center ">
+						<div className="card-body ">
+						<h3>Name:</h3>
+						<p>{data.displayName}</p>
+						<h3>Email:</h3>
+						<p>{data.email}</p>
+										<button className="btn   btn-block" onClick={e => setEdit(true)}>
+										<i class="fas fa-edit"></i> EDIT</button>
+						
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+	</section>
+</div>
 		
 		);
 	} else if (!loaded) {
@@ -130,3 +164,5 @@ else {
 };
 
 export default User;
+
+

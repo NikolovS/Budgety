@@ -7,7 +7,7 @@ const ChangePass = () => {
 		<MainLayout>
 			<div className='profile'>
 				<div className='container'>
-					<h1>Change Password</h1>
+					 
 					<div className='userdata'>
 						<EditPass />
 					</div>

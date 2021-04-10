@@ -71,15 +71,15 @@ const List = () => {
 						<option value='Expense'>Expense</option>
 						<option value='Income'>Income</option>
 					</select>
-					<table>
+					<table class="table table-hover table-bordered">
 						<thead>
 							<tr>
-								<th>Id</th>
-								<th>Type</th>
-								<th onClick={onOrderChange}>Name</th>
-								<th onClick={onOrderChange}>Amount</th>
-								<th onClick={onOrderChange}>Date</th>
-								<th>Actions</th>
+								<th scope="col">Id</th>
+								<th scope="col">Type</th>
+								<th scope="col" onClick={onOrderChange}>Name </th>
+								<th scope="col" onClick={onOrderChange}>Amount</th>
+								<th scope="col" onClick={onOrderChange}>Date</th>
+								<th scope="col">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -121,3 +121,5 @@ const List = () => {
 };
 
 export default List;
+
+ 

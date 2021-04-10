@@ -1,5 +1,69 @@
 .main-page {
-	h1 {
-		background-color: rebeccapurple;
+	max-width: 1200px;
+
+	font-size: 16px;
+	.container {
+		padding: 0 50px;
+		width: 80%;
+		background-image: url("../assets/main.jpg");
+		background-repeat: no-repeat;
+		background-size: 75% 100%;
+		background-position: right;
+	}
+	header {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		nav {
+			padding-right: 40px;
+		}
+		nav ul li {
+			display: flex;
+			border: 2px solid #007a77;
+			border-radius: 10%;
+			padding: 5px 10px;
+		}
+		a {
+			font-size: 24px;
+			font-weight: bold;
+			font-family: Montserrat;
+			color: #007a77;
+			text-decoration: none;
+		}
+	}
+	.topic {
+		margin-top: 40px;
+		display: flex;
+		h1 {
+			color: #525559;
+			display: flex;
+			flex-direction: column;
+
+			font-size: 50px;
+			width: 50%;
+			strong {
+				color: black;
+			}
+		}
+	}
+
+	i {
+		font-size: 24px;
+	}
+	.description {
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		.records {
+			display: flex;
+			flex-direction: row;
+			align-items: baseline;
+			font-size: 30px;
+			p {
+				margin-top: 0;
+				padding-left: 5px;
+			}
+		}
 	}
 }

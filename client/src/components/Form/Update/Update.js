@@ -77,71 +77,96 @@ const Update = ({ loaded, data, setData, id }) => {
 
     if (loaded && data.user) {
         return (
-            <form onSubmit={onSubmitFormHandler}>
-                <select
-                    name="selectType"
-                    onBlur={blurHandler}
-                    onChange={onChangeHandler}
-                    value={data.selectType}
-                >
-                    <option value="">Choose Type</option>
-                    <option value="Expense">Expense</option>
-                    <option value="Income">Income</option>
-                </select>
-                {validationErrors.selectType.length ? (
-                    <h2 style={{ color: 'red' }}>
-                        {validationErrors.selectType}
-                    </h2>
-                ) : (
-                    ''
-                )}
-
-                <label htmlFor="name">Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={data.name}
-                    onBlur={blurHandler}
-                    onChange={onChangeHandler}
-                />
-                {validationErrors.name.length ? (
-                    <h2 style={{ color: 'red' }}>{validationErrors.name}</h2>
-                ) : (
-                    ''
-                )}
-                <label htmlFor="amount">Amount</label>
-                <input
-                    type="number"
-                    id="amount"
-                    name="amount"
-                    value={data.amount}
-                    onBlur={blurHandler}
-                    onChange={onChangeHandler}
-                />
-                {validationErrors.amount.length ? (
-                    <h2 style={{ color: 'red' }}>{validationErrors.amount}</h2>
-                ) : (
-                    ''
-                )}
-
-                <label htmlFor="date">Date</label>
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={data.date}
-                    onBlur={blurHandler}
-                    onChange={onChangeHandler}
-                />
-                {validationErrors.date.length ? (
-                    <h2 style={{ color: 'red' }}>{validationErrors.date}</h2>
-                ) : (
-                    ''
-                )}
-
-                <button>Edit</button>
-            </form>
+           <div className="add-record">
+            <section className="h-100 w-100">
+              <div className="container h-100 w-100">
+                  <div className="row justify-content-md-left h-100">
+                      <div className="card-wrapper ">
+                          
+                          <div className="card fat row justify-content-md-center ">
+                              <div className="card-body ">
+                                  <h4 className="card-title">Add Expense or Income</h4>
+                          <form  className="my-add-validation" onSubmit={onSubmitFormHandler} >
+                                               
+                              <div className="form-group">
+                              <select
+                            required
+                           name="selectType"
+                         value={data.selectType}
+                                onBlur={blurHandler}
+                                onChange={onChangeHandler}
+                            >
+                                <option value="">Choose Type</option>
+                                <option value="Expense">  Expense</option>
+                                <option value="Income">Income</option>
+                            </select>
+                         
+                                              </div>
+                    {validationErrors.selectType.length ? (<h2 style={{ color: 'red' }}>{validationErrors.selectType}</h2>) : ( '')}
+            
+                              <div className="form-group">
+                              <label htmlFor="name">Name</label>
+                                <input
+                                className="col-md-6"
+                                required
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={data.name}
+                                onBlur={blurHandler}
+                                onChange={onChangeHandler}
+                            />
+                                              </div>
+                           {validationErrors.name.length ? (<h2 style={{ color: 'red' }}> {validationErrors.name}</h2> ) : ('')}
+            
+                              <div className="form-group">
+                              <label htmlFor="amount">Amount</label>
+                           <input
+                                className="col-md-6"
+                                required
+                                type="number"
+                                id="amount"
+                                name="amount"
+                                value={data.amount}
+                                onBlur={blurHandler}
+                                onChange={onChangeHandler}
+                            />
+                                              </div>
+                          {validationErrors.amount.length ? (<h2 style={{ color: 'red' }}>{validationErrors.amount}</h2>) : ( '' )}
+            
+                               <div className="form-group">
+                               <label htmlFor="date">Date</label>
+                            <input
+                                required
+                                className="col-md-6"
+                                type="date"
+                                id="date"
+                                name="date"
+                                value={data.date}
+                                onBlur={blurHandler}
+                                onChange={onChangeHandler}
+                            />
+                                      </div>
+                           {validationErrors.date.length ? ( <h2 style={{ color: 'red' }}>{validationErrors.date}</h2>) : ('')}
+                               
+                              <div className="form-group m-0">
+                                          <button className="btn   btn-block">
+                                                      ADD
+                                          </button>
+                      {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
+                                      </div>
+                                      
+                                  </form>
+                              </div>
+                          </div>
+            
+                      </div>
+                  </div>
+              </div>
+            </section>
+            
+            </div>
+          
         )
     } else if (!loaded) {
         return <p>Loading...</p>

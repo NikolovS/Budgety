@@ -38,7 +38,7 @@ const Edit = () => {
         <MainLayout>
             <div className="add-new">
                 <div className="container">
-                    <h1>Update Expense or Income</h1>
+               
 
                     <Update
                         loaded={loaded}

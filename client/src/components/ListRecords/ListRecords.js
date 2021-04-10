@@ -1,6 +1,7 @@
 import 'firebase/firestore'
 import firebase from '../../services/firebase'
 import { Link } from 'react-router-dom'
+import './ListRecords.scss'
 const db = firebase.firestore()
 const TableContent = ({ loaded, data }) => {
     const onClickDelete = (e) => {
@@ -31,9 +32,9 @@ const TableContent = ({ loaded, data }) => {
                     <td>{t.amount}</td>
                     <td>{t.date}</td>
                     <td>
-                        <Link to={`/list/${t.id}`}>Edit</Link>
+                        <Link to={`/list/${t.id}`}><i class="fas fa-edit"></i> Edit</Link>
                         <button onClick={onClickDelete} id={t.id}>
-                            Delete
+                        <i class="far fa-trash-alt"></i> Delete
                         </button>
                     </td>
                 </tr>

@@ -37,7 +37,7 @@ const Create = () => {
 		<MainLayout>
 			<div className='add-new'>
 				<div className='container'>
-					<h1>Add Expense or Income</h1>
+				 
 					<Add loaded={loaded} data={data} setData={setData} />
 				</div>
 			</div>

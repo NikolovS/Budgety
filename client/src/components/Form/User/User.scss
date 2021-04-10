@@ -1,0 +1,39 @@
+.user {
+    font-family: Montserrat;
+    .card-body{
+         
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        a {
+            
+                 
+              
+                background-color:  #007a77;
+                color: white;
+                font-weight: bold;
+                font-family: Montserrat;
+                padding: 5px;
+               
+                
+                 
+        }
+        p{
+            
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h3{
+            color: #525559;
+        }
+    }
+    button {
+        background-color: #007A77;
+        color: white;
+        font-size: 16px;
+    }
+    label{
+        padding-right: 5px;
+    }
+}

@@ -31,7 +31,7 @@ const Profile = () => {
 		<MainLayout>
 			<div className='profile'>
 				<div className='container'>
-					<h1>User Profile</h1>
+					 
 					<div className='userdata'>
 						<User loaded={loaded} data={data} setData={setData} />
 					</div>

@@ -48,7 +48,7 @@ const Total = ({ loaded, data , selection }) => {
             <>
                  
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Expenses:
                             {calculateTotalExp()}
@@ -56,7 +56,7 @@ const Total = ({ loaded, data , selection }) => {
                     </td>
                 </tr>
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Incomes:
                             {calculateTotalInc()}
@@ -64,7 +64,7 @@ const Total = ({ loaded, data , selection }) => {
                     </td>
                 </tr>
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total:
                             {calculateTotal()}
@@ -76,7 +76,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>No records</p>
                 </td>
             </tr>
@@ -84,7 +84,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (!loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>Loading</p>
                 </td>
             </tr>
@@ -92,7 +92,7 @@ const Total = ({ loaded, data , selection }) => {
     } else {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>
                         Unhandled component state
                     </p>
@@ -108,7 +108,7 @@ const Total = ({ loaded, data , selection }) => {
             <>
                  
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Expenses:
                             {calculateTotalExp()}
@@ -122,7 +122,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>No records</p>
                 </td>
             </tr>
@@ -130,7 +130,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (!loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>Loading</p>
                 </td>
             </tr>
@@ -138,7 +138,7 @@ const Total = ({ loaded, data , selection }) => {
     } else {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>
                         Unhandled component state
                     </p>
@@ -155,7 +155,7 @@ const Total = ({ loaded, data , selection }) => {
             <>
                 
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Incomes:
                             {calculateTotalInc()}
@@ -168,7 +168,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>No records</p>
                 </td>
             </tr>
@@ -176,7 +176,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (!loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>Loading</p>
                 </td>
             </tr>
@@ -184,7 +184,7 @@ const Total = ({ loaded, data , selection }) => {
     } else {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>
                         Unhandled component state
                     </p>
@@ -202,7 +202,7 @@ const Total = ({ loaded, data , selection }) => {
             <>
                  
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Expenses:
                             {calculateTotalExp()}
@@ -210,7 +210,7 @@ const Total = ({ loaded, data , selection }) => {
                     </td>
                 </tr>
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total Incomes:
                             {calculateTotalInc()}
@@ -218,7 +218,7 @@ const Total = ({ loaded, data , selection }) => {
                     </td>
                 </tr>
                 <tr>
-                    <td colSpan="5">
+                    <td colSpan="6">
                         <p style={{ textAlign: 'center' }}>
                             Total:
                             {calculateTotal()}
@@ -230,7 +230,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>No records</p>
                 </td>
             </tr>
@@ -238,7 +238,7 @@ const Total = ({ loaded, data , selection }) => {
     } else if (!loaded && data.length === 0) {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>Loading</p>
                 </td>
             </tr>
@@ -246,7 +246,7 @@ const Total = ({ loaded, data , selection }) => {
     } else {
         return (
             <tr>
-                <td colSpan="5">
+                <td colSpan="6">
                     <p style={{ textAlign: 'center' }}>
                         Unhandled component state
                     </p>
