@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import {Link} from 'react-router-dom'
 import firebase from "../../../services/firebase";
 import { rules } from "../../../services/validation";
 import "firebase/firestore";
@@ -146,8 +147,9 @@ const EditPass = () => {
 				   
 				  <div className="form-group m-0">
 							  <button className="btn   btn-block">
-										  SAVE
+											<i class="far fa-save"></i>	SAVE
 							  </button>
+							<Link to={'/profile'} className="btn back btn-block"   > <i class="fas fa-backspace"></i>Back</Link>
 		  {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
 						  </div>
 						  

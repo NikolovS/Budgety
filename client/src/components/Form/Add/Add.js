@@ -110,9 +110,10 @@ const Add = ({ loaded, data, setData }) => {
                           <form  className="my-add-validation" onSubmit={onSubmitFormHandler} >
                                                
                               <div className="form-group">
-                              <select
-                                                required
-                                                autofocus
+                                <select
+                                className="form-select-lg mb-3"
+                                required
+                                autofocus
                                 name="selectType"
                                 onBlur={blurHandler}
                                 onChange={onChangeHandler}
@@ -172,7 +173,7 @@ const Add = ({ loaded, data, setData }) => {
                                
                               <div className="form-group m-0">
                                           <button className="btn   btn-block">
-                                                      ADD
+                                                 <i class="far fa-save"></i>     ADD
                                           </button>
                       {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
                                       </div>

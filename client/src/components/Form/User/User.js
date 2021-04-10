@@ -99,11 +99,12 @@ return (
 									</div>
 									<div className="form-group">
 										<Link to='change-password' className="btn   btn-block">Change Password</Link>
+										
 										</div>
 				  {validationErrors.email.length ? (<h2 style={{ color: "red" }}>{validationErrors.email}</h2>) : ("")}
 							  <div className="form-group m-0">
-							  <button className="btn   btn-block">Save</button>
-					
+							  <button className="btn   btn-block"> <i class="far fa-save"></i>Save</button>
+					<button className="btn back btn-block" onClick={(e)=>setEdit(false)}> <i class="fas fa-backspace"></i>Back</button>
 									  </div>
 				  {validationErrors.firebaseError.length ? (<h2 style={{ color: "red" }}>{validationErrors.firebaseError}</h2>) : ("")}
 							 

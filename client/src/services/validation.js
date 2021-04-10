@@ -34,13 +34,17 @@ export const rules = {
         return ''
     },
     firstName: (value) => {
-        if (value && value[0] !== value[0].toUpperCase()) {
+        if (!value) {
+            return 'First Name is required.'
+        }else if (value && value[0] !== value[0].toUpperCase()) {
             return 'Must start with upper!'
         }
         return ''
     },
     lastName: (value) => {
-        if (value && value[0] !== value[0].toUpperCase()) {
+        if (!value) {
+            return 'Last Name is required.'
+        }else if (value && value[0] !== value[0].toUpperCase()) {
             return 'Must start with upper!'
         }
         return ''

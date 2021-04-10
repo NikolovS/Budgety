@@ -85,7 +85,7 @@ const Update = ({ loaded, data, setData, id }) => {
                           
                           <div className="card fat row justify-content-md-center ">
                               <div className="card-body ">
-                                  <h4 className="card-title">Add Expense or Income</h4>
+                                  <h4 className="card-title">Edit Current Record</h4>
                           <form  className="my-add-validation" onSubmit={onSubmitFormHandler} >
                                                
                               <div className="form-group">
@@ -151,7 +151,7 @@ const Update = ({ loaded, data, setData, id }) => {
                                
                               <div className="form-group m-0">
                                           <button className="btn   btn-block">
-                                                      ADD
+                                                   <i class="far fa-save"></i>   ADD
                                           </button>
                       {validationErrors.firebaseError.length ? (<h2 style={{ color: 'red' }}>{validationErrors.firebaseError}</h2>) : ('')}
                                       </div>

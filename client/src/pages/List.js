@@ -66,7 +66,7 @@ const List = () => {
 			<div className='budget'>
 				<div className='container'>
 					<h1>List</h1>
-					<select name='type' onChange={onTypeChange}>
+					<select name='type' onChange={onTypeChange} className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
 						<option value=''>All</option>
 						<option value='Expense'>Expense</option>
 						<option value='Income'>Income</option>

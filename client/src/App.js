@@ -1,4 +1,4 @@
-// import Register from './components/Auth/Register'
+
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Register from "./pages/Register";
