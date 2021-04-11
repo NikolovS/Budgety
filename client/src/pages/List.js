@@ -76,7 +76,7 @@ const List = () => {
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Type</th>
-								<th scope="col" onClick={onOrderChange}>Name </th>
+								<th scope="col" onClick={onOrderChange}>Name</th>
 								<th scope="col" onClick={onOrderChange}>Amount</th>
 								<th scope="col" onClick={onOrderChange}>Date</th>
 								<th scope="col">Actions</th>

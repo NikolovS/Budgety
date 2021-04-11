@@ -11,6 +11,7 @@ import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Budget from "./pages/Budget";
 import AuthRoute from "./AuthRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
 	return (
@@ -25,6 +26,8 @@ function App() {
 				<AuthRoute path={"/list/:id"} component={Edit} />
 				<AuthRoute path={"/profile"} component={Profile} />
 				<AuthRoute path={"/change-password"} component={ChangePass} />
+				<AuthRoute path={"*"} component={NotFound} />
+
 			</Switch>
 		</div>
 	);
