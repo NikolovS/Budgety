@@ -54,11 +54,11 @@ const Update = ({ loaded, data, setData, id }) => {
 
     const onChangeHandler = (e) => {
         let state = { ...data }
-        // if (e.target.name === 'amount') {
-        //     state[e.target.name] = Number(e.target.value)
-        // } else {
+        if (e.target.name === 'amount') {
+            state[e.target.name] = Number(e.target.value)
+        } else {
         state[e.target.name] = e.target.value
-        // }
+        }
 
         setData(state)
     }
